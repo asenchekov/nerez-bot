@@ -1,7 +1,9 @@
 require('dotenv').config();
+const http = require('http');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const TOKEN = process.env.TOKEN;
+const PORT = process.env.PORT;
 
 bot.login(TOKEN);
 
@@ -29,3 +31,8 @@ bot.on('message', msg => {
         msg.reply(responses[Math.floor(Math.random() * responses.length)]);
   }
 });
+
+http.createServer(function (req, res) {
+  res.write('Hello World!'); //write a response to the client
+  res.end(); //end the response
+}).listen(PORT); //the server object listens on port 8080
