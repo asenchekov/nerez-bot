@@ -8,7 +8,7 @@ const PORT = process.env.PORT;
 function startKeepAlive() {
   setInterval(function() {
       var options = {
-          host: 'https://nerez-bot.herokuapp.com',
+          host: 'https://nerez-bot.herokuapp.com/',
           port: PORT,
           path: '/'
       };
