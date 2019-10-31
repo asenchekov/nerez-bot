@@ -1,5 +1,6 @@
 require('dotenv').config();
 const http = require('http');
+const https = require('http');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const TOKEN = process.env.TOKEN;
@@ -8,11 +9,11 @@ const PORT = process.env.PORT;
 function startKeepAlive() {
   setInterval(function() {
       var options = {
-          host: 'https://nerez-bot.herokuapp.com/',
+          host: 'https://nerez-bot.herokuapp.com',
           port: PORT,
           path: '/'
       };
-      http.get(options, function(res) {
+      https.get(options, function(res) {
           res.on('data', function(chunk) {
               try {
                   // optional logging... disable after it's working
