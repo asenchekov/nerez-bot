@@ -8,12 +8,7 @@ const PORT = process.env.PORT;
 
 function startKeepAlive() {
   setInterval(function() {
-      var options = {
-          host: 'https://nerez-bot.herokuapp.com/',
-          port: PORT,
-          path: '/'
-      };
-      https.get(options, function(res) {
+      https.get('https://nerez-bot.herokuapp.com/', function(res) {
           res.on('data', function(chunk) {
               try {
                   // optional logging... disable after it's working
@@ -25,7 +20,7 @@ function startKeepAlive() {
       }).on('error', function(err) {
           console.log("Error: " + err.message);
       });
-  }, 1000); // load every 20 minutes
+  }, 20 * 60 * 1000); // load every 20 minutes
 }
 
 bot.login(TOKEN);
