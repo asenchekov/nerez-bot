@@ -3,7 +3,7 @@ const http = require('http');
 const Discord = require('discord.js');
 
 const { keepAlive } = require('./keepAliveFunction');
-const { respond } = require('./onMessageResponse.js');
+const { respond } = require('./onMessageResponse');
 
 const bot = new Discord.Client();
 const TOKEN = process.env.TOKEN;
@@ -15,7 +15,7 @@ bot.on('ready', () => {
   console.info(`Logged in as ${bot.user.tag}!`);
 });
 
-bot.on('message', respond);
+bot.on('message', (msg) => respond(msg));
 
 http.createServer(function (req, res) {
   res.write('Hello World!');
