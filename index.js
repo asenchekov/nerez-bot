@@ -2,25 +2,38 @@ require('dotenv').config();
 const http = require('http');
 const Discord = require('discord.js');
 
+// Keep alive function to keep heroku server from sleeping
 const { keepAlive } = require('./keepAliveFunction');
-const { respond } = require('./onMessageResponse');
 
+// Event handlers
+const { respond } = require('./eventHandlers/onMessage');
+const { onReady } = require('./eventHandlers/onReady');
+
+// Discord client instance
 const bot = new Discord.Client();
+
+// Token used for bot connection
 const TOKEN = process.env.TOKEN;
+
+// Port environmental variable exposed by heroku
 const PORT = process.env.PORT;
 
+// Login bot to discord with the token
 bot.login(TOKEN);
 
+// on ready event consumer
 bot.on('ready', () => {
-  console.info(`Logged in as ${bot.user.tag}!`);
+  console.log(bot);
+  return onReady(bot.user.tag)
 });
 
-bot.on('message', (msg) => respond(msg));
+// on message event consumer
+bot.on('message', respond);
 
+// http server as bot homepage
 http.createServer(function (req, res) {
   res.write('Hello World!');
   res.end();
 }).listen(PORT);
 
-// startKeepAlive();
 keepAlive();

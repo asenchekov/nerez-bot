@@ -1,3 +1,9 @@
+/*
+  setInterval function to get data from heroku
+  every 20 minutes to make sure heroku free dyno is running
+  preventing it from sleeping
+*/
+
 const https = require('https');
 
 
