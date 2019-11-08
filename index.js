@@ -3,11 +3,12 @@ const http = require('http');
 const Discord = require('discord.js');
 
 // Keep alive function to keep heroku server from sleeping
-const { keepAlive } = require('./keepAliveFunction');
+const keepAlive = require('./keepAliveFunction');
 
 // Event handlers
-const { respond } = require('./eventHandlers/onMessage');
-const { onReady } = require('./eventHandlers/onReady');
+const respond = require('./eventHandlers/onMessage');
+const onReady = require('./eventHandlers/onReady');
+const onPresenceUpdate = require('./eventHandlers/onPresenceUpdate');
 
 // Discord client instance
 const bot = new Discord.Client();
@@ -23,9 +24,11 @@ bot.login(TOKEN);
 
 // on ready event consumer
 bot.on('ready', () => {
-  console.log(bot);
-  return onReady(bot.user.tag)
+  return onReady(bot)
 });
+
+// on guild member presenceUpdate
+bot.on('presenceUpdate', onPresenceUpdate);
 
 // on message event consumer
 bot.on('message', respond);
