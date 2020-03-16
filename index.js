@@ -10,11 +10,11 @@ const TOKEN = process.env.TOKEN
 const PORT = process.env.PORT
 
 bot.on('ready', () => {
-  // bot.channels.forEach((channel) => {
-  //   if (channel.type === 'text') {
-  //     channel.send('Hello, I\'m nEREZ, write `@nEREZ commands`\nto see what Asen made me do')
-  //   }
-  // })
+  bot.channels.forEach((channel) => {
+    if (channel.type === 'text') {
+      channel.send('Hello, I\'m nEREZ, write `@nEREZ commands`\nto see what Asen made me do')
+    }
+  })
   console.info(`Logged in as ${bot.user.tag}!`)
 })
 

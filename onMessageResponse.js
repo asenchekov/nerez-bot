@@ -35,7 +35,7 @@ module.exports = {
       }
     } else if (message.content.split(' ').includes('commands')
     && mentioned) {
-      message.reply('For now I can only make a game appointments, this is how:\nwrite `@nEREZ gametime date time` \nplease format <date time> like `2020-02-23 18:20`\nonly GMT time cuz we in LNDN bitch!')
+      message.reply('For now I can only make game appointments, this is how:\nwrite `@nEREZ gametime date time` \nplease format <date time> like `2020-02-23 18:20`\nonly GMT time cuz we in LNDN bitch!')
     } else if ((message.content.split(' ').includes('mic')
       || message.content.split(' ').includes('microphone')
       || message.content.includes('hear me'))
