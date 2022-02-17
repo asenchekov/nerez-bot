@@ -16,6 +16,6 @@
     "moment": "^2.24.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.15"
   }
 }
